@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, ScrollView, Image, Button, TextInput, Alert } from "react-native";
-// import { TextInput } from "react-native-web";
+
 import { Component } from "react/cjs/react.production.min";
 import SearchButton from '../../components/CustomButton'
 import CustomInput from '../../components/CustomInput'
@@ -8,8 +8,7 @@ import CustomButton from '../../components/CustomButton'
 
 // building the home screen
 const SignUpScreen = () => {
-    const [text, onChangeText] = React.useState("Useless Text");
-    const [number, onChangeNumber] = React.useState(null);
+    const [text, onChangeText] = React.useState(null);
     const Separator = () => (
         <View style={styles.separator} />
     );
@@ -20,11 +19,10 @@ const SignUpScreen = () => {
 
                 <TextInput
                     style={styles.input}
-                    onChangeText={onChangeNumber}
-                    value={number}
+                    onChangeText={onChangeText}
+                    value={text}
                     placeholder="Some data there"
-                    keyboardType="numeric"
-                    backgroundColor="white"
+                    backgroundColor='white'
                 />
 
                 <Button

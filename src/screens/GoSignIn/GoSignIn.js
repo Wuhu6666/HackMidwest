@@ -1,20 +1,18 @@
 import React from "react";
-import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
-import { TextInput } from "react-native-web";
+import {
+    View, Text, StyleSheet, ScrollView, Image, Pressable, TextInput
+} from "react-native";
 import { Component } from "react/cjs/react.production.min";
 import SearchButton from '../../components/CustomButton'
 import CustomInput from '../../components/CustomInput'
 import CustomButton from '../../components/CustomButton'
 import { useNavigation } from '@react-navigation/native'
-
 import { User, Vehicle } from "./realm/allSchemas";
 const Realm = require('realm');
 
-
-
 const SignInScreen = () => {
     const navigation = useNavigation()
-
+    const [text, onChangeText] = React.useState(null);
     // const onHomePressed = () => {
     //     console.warn('Sign Up pressed')
     //     navigation.navigate('Home')
@@ -23,13 +21,37 @@ const SignInScreen = () => {
     return (
         <ScrollView>
             <View style={styles.root}>
-                <Text style={{ fontSize: 30, alignSelf: 'center' }}>This is the Sign In Page</Text>
-                <CustomButton
-                    text="Sign In Now"
-                // onPress={() => addUser('Derek', 'Heimes', '4026403466', 'derekheimes@gmail.com', 'student')}
-                // onPress={onHomePressed}
+                <Text style={styles.headerText}>
+                    KPark
+                </Text>
+                <Image source={require('../../../assets/Logo.jpg')}
+                    style={{ width: 700, height: 450 }} />
+                <Text style={styles.SomeText}>Username: </Text>
+                <TextInput
+                    style={{ fontSize: 40 }}
+                    style={styles.input}
+                    onChangeText={onChangeText}
+                    value={text}
+                    placeholder="Enter your your username: "
+                    backgroundColor="white"
                 />
+                <TextInput
+                    style={{ fontSize: 40 }}
+                    style={styles.input}
+                    onChangeText={onChangeText}
+                    value={text}
+                    placeholder="Enter your password: "
+                    backgroundColor="white"
+                />
+                <Pressable
+                    style={styles.button}
+                // onPress={onGoSignInPressed}
+                >
+                    <Text style={styles.ButtonText}>Sign In Now</Text>
+                </Pressable>
+
             </View>
+
         </ScrollView>
     );
 }
@@ -42,6 +64,12 @@ const styles = StyleSheet.create({
     },
     headerText: {
         fontSize: 60,
+        fontWeight: 'bold',
+        marginVertical: 5,
+        color: 'white',
+    },
+    SomeText: {
+        fontSize: 20,
         fontWeight: 'bold',
         marginVertical: 5,
         color: 'white',
@@ -66,6 +94,13 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         backgroundColor: 'white',
         borderWidth: 2
+    },
+    input: {
+        height: 50,
+        margin: 25,
+        width: 250,
+        borderWidth: 1,
+        padding: 10,
     },
 })
 

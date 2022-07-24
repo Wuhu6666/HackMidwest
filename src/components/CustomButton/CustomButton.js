@@ -1,12 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, Pressable } from 'react-native'
 
-// setting up the buttons used in the login page as well as several subsequent pages
-// the buttons are defined as pressable so that they can be pressed
-// this is done here so as to not repeat the same code in multiple places
-
-
-// pretty much defining that we're making a button, and explaining what it does and how it looks
 const CustomButton = ({ onPress, text, type = "PRIMARY", backgroundColor, foregroundColor }) => {
     return (
         <Pressable
@@ -28,7 +22,6 @@ const CustomButton = ({ onPress, text, type = "PRIMARY", backgroundColor, foregr
     )
 }
 
-// creating the styles for the buttons (how they look)
 const styles = StyleSheet.create({
     container: {
         width: '100%',

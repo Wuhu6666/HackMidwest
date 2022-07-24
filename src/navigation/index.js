@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import GoSignIn from '../screens/GoSignIn';
+
 const MyTheme = {
     ...DefaultTheme,
     colors: {

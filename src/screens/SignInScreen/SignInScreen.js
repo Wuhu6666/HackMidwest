@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, Image, StyleSheet, useWindowDimensions, ScrollView, TextInput } from 'react-native'
+import { View, Text, Image, StyleSheet, useWindowDimensions, ScrollView, TextInput, Button } from 'react-native'
 import CustomButton from '../../components/CustomButton'
 import { useNavigation } from '@react-navigation/native'
 import { useForm, Controller } from 'react-hook-form'
@@ -27,12 +27,13 @@ const SignInScreen = () => {
                 <Text style={styles.headerText}>
                     Logo
                 </Text>
-                <CustomButton
-                    text="Sign In"
+
+                <Button
+                    title="Sign In"
                     onPress={onGoSignInPressed}
                 />
-                <CustomButton
-                    text="Sign Up"
+                <Button
+                    title="Sign Up"
                     onPress={onSignUpPressed}
                 />
             </View>

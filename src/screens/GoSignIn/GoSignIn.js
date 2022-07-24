@@ -8,11 +8,20 @@ import CustomInput from '../../components/CustomInput'
 import CustomButton from '../../components/CustomButton'
 import { useNavigation } from '@react-navigation/native'
 import { User, Vehicle } from "./realm/allSchemas";
+import RadioButtonRN from 'radio-buttons-react-native';
 const Realm = require('realm');
 
 const SignInScreen = () => {
+    const data = [
+        {
+            label: 'Student'
+        },
+        {
+            label: 'Staff'
+        },
+    ];
     const navigation = useNavigation()
-    const [username, onChangeUname] = React.useState(null);
+    const [username, onChangeEmail] = React.useState(null);
     const [password, onChangePass] = React.useState(null);
 
     const Separator = () => (
@@ -32,12 +41,19 @@ const SignInScreen = () => {
                 </Text>
                 <Separator />
                 <Separator />
+                <RadioButtonRN
+                    data={data}
+                    selectedBtn={(e) => console.log(e)}
+                    style={{ width: 200 }}
+                    textColor={'white'}
+                    boxDeactiveBgColor={'grey'}
+                />
                 <Separator />
                 <Separator />
-                <Text style={styles.SomeText}>Username: </Text>
+                <Text style={styles.SomeText}>Email: </Text>
                 <TextInput
                     style={styles.input}
-                    onChangeText={onChangeUname}
+                    onChangeText={onChangeEmail}
                     value={username}
                     placeholder="Enter your your username: "
                     backgroundColor="white"

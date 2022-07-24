@@ -1,57 +1,135 @@
 import React from "react";
-import { View, Text, StyleSheet, ScrollView, Image, Button, TextInput, Alert } from "react-native";
-
+import {
+    View, Text, StyleSheet, ScrollView, Image, Pressable, TextInput
+} from "react-native";
 import { Component } from "react/cjs/react.production.min";
 import SearchButton from '../../components/CustomButton'
 import CustomInput from '../../components/CustomInput'
 import CustomButton from '../../components/CustomButton'
+import { useNavigation } from '@react-navigation/native'
+import { User, Vehicle } from "./realm/allSchemas";
+import RadioButtonRN from 'radio-buttons-react-native';
+const Realm = require('realm');
 
-// building the home screen
 const SignUpScreen = () => {
-    const [text, onChangeText] = React.useState(null);
+    const data = [
+        {
+            label: 'Student'
+        },
+        {
+            label: 'Staff'
+        },
+    ];
+    const navigation = useNavigation()
+    const [username, onChangeUname] = React.useState(null);
+    const [password, onChangePass] = React.useState(null);
+
     const Separator = () => (
         <View style={styles.separator} />
     );
+
+    const onHomePressed = () => {
+        console.warn('Sign Up pressed')
+        navigation.navigate('Home')
+    }
+
     return (
         <ScrollView>
             <View style={styles.root}>
-                <Text style={{ fontSize: 30, alignSelf: 'center' }}>This is the Sign Up Page</Text>
-
-                <TextInput
-                    style={styles.input}
-                    onChangeText={onChangeText}
-                    value={text}
-                    placeholder="Some data there"
-                    backgroundColor='white'
-                />
-
-                <Button
-                    title="Add"
-                    onPress={() => Alert.alert('Add Button with adjusted color pressed')}
+                <Text style={styles.headerText}>
+                    KPark
+                </Text>
+                <Separator />
+                <Separator />
+                <Text style={styles.SomeText}>You are: </Text>
+                <RadioButtonRN
+                    data={data}
+                    selectedBtn={(e) => console.log(e)}
+                    style={{ width: 200 }}
+                    textColor={'white'}
+                    boxDeactiveBgColor={'grey'}
                 />
                 <Separator />
-                <Button
-                    title="Get"
-                    color="#f194ff"
-                    onPress={() => Alert.alert('Get Button with adjusted color pressed')}
-
+                <Separator />
+                <Text style={styles.SomeText}>Email: </Text>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={onChangeUname}
+                    value={username}
+                    placeholder="Enter your your username: "
+                    backgroundColor="white"
                 />
+                <Text style={styles.SomeText}>Password: </Text>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={onChangePass}
+                    value={password}
+                    placeholder="Enter your password: "
+                    backgroundColor="white"
+                /><Text style={styles.SomeText}>Comfirm Your Password: </Text>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={onChangePass}
+                    value={password}
+                    placeholder="Enter your password: "
+                    backgroundColor="white"
+                />
+                <Separator />
+                <Pressable
+                    style={styles.button}
+                    onPress={onHomePressed}
+                >
+                    <Text style={styles.ButtonText}>Sign Up</Text>
+                </Pressable>
+
             </View>
+
         </ScrollView>
     );
 }
 
-// making it look pretty
 const styles = StyleSheet.create({
     root: {
         alignItems: 'center',
-        padding: 40,
-        backgroundColor: '#3b5998',
+        padding: 88,
+        backgroundColor: 'black',
+    },
+    headerText: {
+        fontSize: 60,
+        fontWeight: 'bold',
+        marginVertical: 5,
+        color: 'white',
+    },
+    SomeText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'white',
+    },
+    ButtonText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginVertical: 5,
+        color: 'black',
+    },
+    container: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+
+    button: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 200,
+        height: 70,
+        borderRadius: 5,
+        backgroundColor: 'white',
+        borderWidth: 2
     },
     input: {
-        height: 40,
-        margin: 30,
-        width: 300,
+        height: 50,
+        margin: 25,
+        width: 250,
         borderWidth: 1,
         padding: 10,
     },
@@ -62,5 +140,25 @@ const styles = StyleSheet.create({
     },
 })
 
-// exporting the home screen to be used in the app (so it can be used in other screens)
 export default SignUpScreen;
+
+// async function addUser(first, last, number, email, role) {
+//     let user;
+//     const realm = await Realm.open({ schema: [User, Vehicle] })
+//     console.log(`Adding user with email ${email}`);
+//     realm.write(() => {
+//         user = realm.create("User", {
+//             _id: ObjectId(),
+//             firstName: first,
+//             lastName: last,
+//             phoneNumber: number,
+//             email: email,
+//             role: role
+//         })
+//     })
+// }
+
+// function getUser(email) {
+//     const user = realm.objects("User").filtered(`email = ${email}`)[0];
+//     console.log(`The user: ${user}`)
+// }

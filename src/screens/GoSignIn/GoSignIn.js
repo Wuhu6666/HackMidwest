@@ -38,7 +38,34 @@ const styles = StyleSheet.create({
     root: {
         alignItems: 'center',
         padding: 40,
-        backgroundColor: '#3b5998',
+        backgroundColor: 'black',
+    },
+    headerText: {
+        fontSize: 60,
+        fontWeight: 'bold',
+        marginVertical: 5,
+        color: 'white',
+    },
+    ButtonText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginVertical: 5,
+        color: 'black',
+    },
+    container: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+
+    button: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 200,
+        height: 70,
+        borderRadius: 5,
+        backgroundColor: 'white',
+        borderWidth: 2
     },
 })
 

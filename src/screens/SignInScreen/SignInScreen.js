@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, Image, StyleSheet, useWindowDimensions, ScrollView, TextInput, Pressable } from 'react-native'
+import { View, Text, StyleSheet, useWindowDimensions, ScrollView, TextInput, Pressable, Image } from 'react-native'
 import CustomButton from '../../components/CustomButton'
 import { useNavigation } from '@react-navigation/native'
 import { useForm, Controller } from 'react-hook-form'
@@ -21,21 +21,29 @@ const SignInScreen = () => {
     }
 
     return (
-        <ScrollView showsVerticalScrollIndicator={false}>
-            <View style={styles.root}>
+        <ScrollView style={styles.backgroundColor}>
 
+            <View style={styles.root}>
                 <Text style={styles.headerText}>
-                    Logo
+                    KPark
                 </Text>
+                <Image source={require('../../../assets/Logo.jpg')}
+                    style={{ width: 700, height: 450 }} />
                 <View style={styles.container}>
                     <Pressable
                         style={styles.button}
                         onPress={onGoSignInPressed}
-                    />
+
+                    >
+                        <Text style={styles.ButtonText}>Sign In</Text>
+                    </Pressable>
                     <Pressable
                         style={styles.button}
                         onPress={onSignUpPressed}
-                    />
+                    ><Text style={styles.ButtonText}>
+                            Sign Up
+                        </Text>
+                    </Pressable>
 
                 </View>
 
@@ -45,41 +53,37 @@ const SignInScreen = () => {
 }
 
 const styles = StyleSheet.create({
-
     root: {
         alignItems: 'center',
         padding: 40,
-        backgroundColor: '#3b5998',
+        backgroundColor: 'black',
     },
-
-    logo: {
-        width: '70%',
-        maxWidth: 300,
-        maxHeight: 200,
-    },
-
     headerText: {
-        fontSize: 30,
+        fontSize: 60,
         fontWeight: 'bold',
         marginVertical: 5,
         color: 'white',
-
     },
-
+    ButtonText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginVertical: 5,
+        color: 'black',
+    },
     container: {
         flex: 1,
-        marginTop: 450,
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
+
     button: {
         alignItems: 'center',
         justifyContent: 'center',
-        paddingVertical: 12,
-        paddingHorizontal: 32,
-        borderRadius: 4,
-        elevation: 3,
+        width: 200,
+        height: 70,
+        borderRadius: 5,
         backgroundColor: 'white',
+        borderWidth: 2
     },
 
 })

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, Image, StyleSheet, useWindowDimensions, ScrollView, TextInput, Button } from 'react-native'
+import { View, Text, Image, StyleSheet, useWindowDimensions, ScrollView, TextInput, Pressable } from 'react-native'
 import CustomButton from '../../components/CustomButton'
 import { useNavigation } from '@react-navigation/native'
 import { useForm, Controller } from 'react-hook-form'
@@ -27,15 +27,18 @@ const SignInScreen = () => {
                 <Text style={styles.headerText}>
                     Logo
                 </Text>
+                <View style={styles.container}>
+                    <Pressable
+                        style={styles.button}
+                        onPress={onGoSignInPressed}
+                    />
+                    <Pressable
+                        style={styles.button}
+                        onPress={onSignUpPressed}
+                    />
 
-                <Button
-                    title="Sign In"
-                    onPress={onGoSignInPressed}
-                />
-                <Button
-                    title="Sign Up"
-                    onPress={onSignUpPressed}
-                />
+                </View>
+
             </View>
         </ScrollView>
     )
@@ -61,6 +64,22 @@ const styles = StyleSheet.create({
         marginVertical: 5,
         color: 'white',
 
+    },
+
+    container: {
+        flex: 1,
+        marginTop: 450,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    button: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        borderRadius: 4,
+        elevation: 3,
+        backgroundColor: 'white',
     },
 
 })

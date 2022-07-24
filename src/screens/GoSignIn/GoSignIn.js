@@ -12,11 +12,17 @@ const Realm = require('realm');
 
 const SignInScreen = () => {
     const navigation = useNavigation()
-    const [text, onChangeText] = React.useState(null);
-    // const onHomePressed = () => {
-    //     console.warn('Sign Up pressed')
-    //     navigation.navigate('Home')
-    // }
+    const [username, onChangeUname] = React.useState(null);
+    const [password, onChangePass] = React.useState(null);
+
+    const Separator = () => (
+        <View style={styles.separator} />
+    );
+
+    const onHomePressed = () => {
+        console.warn('Sign Up pressed')
+        navigation.navigate('Home')
+    }
 
     return (
         <ScrollView>
@@ -24,28 +30,31 @@ const SignInScreen = () => {
                 <Text style={styles.headerText}>
                     KPark
                 </Text>
-                <Image source={require('../../../assets/Logo.jpg')}
-                    style={{ width: 700, height: 450 }} />
+                <Separator />
+                <Separator />
+                <Separator />
+                <Separator />
                 <Text style={styles.SomeText}>Username: </Text>
                 <TextInput
-                    style={{ fontSize: 40 }}
                     style={styles.input}
-                    onChangeText={onChangeText}
-                    value={text}
+                    onChangeText={onChangeUname}
+                    value={username}
                     placeholder="Enter your your username: "
                     backgroundColor="white"
                 />
+                <Text style={styles.SomeText}>Password: </Text>
                 <TextInput
-                    style={{ fontSize: 40 }}
                     style={styles.input}
-                    onChangeText={onChangeText}
-                    value={text}
+                    onChangeText={onChangePass}
+                    value={password}
                     placeholder="Enter your password: "
                     backgroundColor="white"
                 />
+                <Separator />
+                <Separator />
                 <Pressable
                     style={styles.button}
-                // onPress={onGoSignInPressed}
+                    onPress={onHomePressed}
                 >
                     <Text style={styles.ButtonText}>Sign In Now</Text>
                 </Pressable>
@@ -59,7 +68,7 @@ const SignInScreen = () => {
 const styles = StyleSheet.create({
     root: {
         alignItems: 'center',
-        padding: 40,
+        padding: 88,
         backgroundColor: 'black',
     },
     headerText: {
@@ -71,7 +80,6 @@ const styles = StyleSheet.create({
     SomeText: {
         fontSize: 20,
         fontWeight: 'bold',
-        marginVertical: 5,
         color: 'white',
     },
     ButtonText: {
@@ -101,6 +109,11 @@ const styles = StyleSheet.create({
         width: 250,
         borderWidth: 1,
         padding: 10,
+    },
+    separator: {
+        marginVertical: 8,
+        borderBottomColor: '#737373',
+        borderBottomWidth: StyleSheet.hairlineWidth,
     },
 })
 
